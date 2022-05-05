@@ -1,0 +1,42 @@
+@mixin ring ($height, $width, $color) {
+    height: $height;
+    width: $width;
+    border-radius : 100px;
+    box-shadow : $height/10 $width/10 $height/10 darken($color, 20);
+    border: $height/10 solid $color ;
+    background-color : transparent;
+  }
+  
+  .myPrecious {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+  }
+  
+  .smallRing {
+    @include ring (50px, 50px, $main-color)
+  }
+  
+  .bigRing {
+    @include ring (200px, 200px, #FFDD33)
+  }
+  
+  .loop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .sixRings {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
+  }
+  
+  @for $i from 1 through 6 {
+    .ring:nth-child(#{$i}) {
+      @include ring (40px*(1+$i/3), 40px*(1+$i/3), grey);
+      margin-right: -5%;
+    }
+  }
